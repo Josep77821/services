@@ -7,7 +7,14 @@
     <title>Amazon Checkout</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Basic styling for the entire flow */
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Container */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f3f3f3;
@@ -16,18 +23,17 @@
         }
 
         .container {
-            width: 100%;
             max-width: 800px;
             margin: 50px auto;
-            background-color: #fff;
             padding: 30px;
+            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .header {
             background-color: #131921;
-            padding: 15px 20px;
+            padding: 20px;
             color: white;
             font-size: 20px;
             font-weight: 500;
@@ -37,26 +43,19 @@
 
         h1 {
             font-size: 24px;
-            color: #131921;
             font-weight: 500;
+            color: #131921;
             margin-bottom: 20px;
         }
 
-        .section-title {
-            font-size: 20px;
-            font-weight: 500;
-            color: #131921;
-            margin-bottom: 15px;
-        }
-
+        /* Inputs and Buttons */
         .input-field {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
+            margin: 8px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
-            box-sizing: border-box;
         }
 
         .input-field:focus {
@@ -66,7 +65,7 @@
 
         .submit-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background-color: #ff9900;
             color: white;
             border: none;
@@ -80,29 +79,17 @@
             background-color: #e68900;
         }
 
-        .payment-methods {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-        }
-
-        .payment-methods img {
-            max-width: 60px;
-            cursor: pointer;
-        }
-
-        .resend-otp {
+        .resend-otp, .forgot-password {
             text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 10px;
         }
 
-        .resend-otp a {
+        .forgot-password a, .resend-otp a {
             color: #0066c0;
             text-decoration: none;
         }
 
-        .resend-otp a:hover {
+        .forgot-password a:hover, .resend-otp a:hover {
             text-decoration: underline;
         }
 
@@ -122,13 +109,41 @@
             text-decoration: underline;
         }
 
-        /* Hiding sections except for the active one */
+        .payment-methods {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .payment-methods img {
+            max-width: 100px;
+            cursor: pointer;
+        }
+
+        /* Section handling (hides inactive sections) */
         .section {
             display: none;
         }
 
         .active {
             display: block;
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .payment-methods img {
+                max-width: 80px;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -137,7 +152,7 @@
 <div class="container">
     <!-- Header Section -->
     <div class="header">
-        <span>Secure Checkout</span>
+        <span>Amazon Checkout</span>
     </div>
 
     <!-- Login Page Section -->
@@ -151,7 +166,7 @@
         <div class="forgot-password">
             <a href="#">Forgot your password?</a>
         </div>
-        <div class="create-account">
+        <div class="back-to-cart">
             <p>New to Amazon? <a href="#">Create your Amazon account</a></p>
         </div>
     </div>
