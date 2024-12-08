@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amazon Billing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for billing page */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #131921;
+            padding: 15px 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #131921;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #131921;
+            margin-bottom: 15px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #ff9900;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background-color: #e68900;
+        }
+
+        .summary {
+            background-color: #f3f3f3;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+
+        .summary p {
+            margin: 5px 0;
+        }
+
+        .summary .total {
+            font-weight: bold;
+        }
+
+        .back-to-cart {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .back-to-cart a {
+            color: #0066c0;
+            text-decoration: none;
+        }
+
+        .back-to-cart a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <span>Secure Checkout</span>
+    </div>
+
+    <!-- Billing Information Section -->
+    <h1>Billing Information</h1>
+    <div class="section-title">Enter your billing details</div>
+    <form action="#" method="POST">
+        <!-- Full Name -->
+        <input type="text" id="fullName" name="fullName" class="input-field" placeholder="Full Name" required>
+        
+        <!-- Address Line 1 -->
+        <input type="text" id="address1" name="address1" class="input-field" placeholder="Address Line 1" required>
+        
+        <!-- Address Line 2 -->
+        <input type="text" id="address2" name="address2" class="input-field" placeholder="Address Line 2 (optional)">
+        
+        <!-- City -->
+        <input type="text" id="city" name="city" class="input-field" placeholder="City" required>
+        
+        <!-- State/Province -->
+        <input type="text" id="state" name="state" class="input-field" placeholder="State/Province" required>
+        
+        <!-- Postal Code -->
+        <input type="text" id="postalCode" name="postalCode" class="input-field" placeholder="Postal Code" required>
+        
+        <!-- Phone Number -->
+        <input type="tel" id="phone" name="phone" class="input-field" placeholder="Phone Number" required>
+
+        <!-- Continue to Payment Button -->
+        <button type="submit" class="submit-btn">Continue to Payment</button>
+    </form>
+
+    <!-- Order Summary -->
+    <div class="summary">
+        <div class="section-title">Order Summary</div>
+        <p>Item Total: <span>$99.99</span></p>
+        <p>Shipping: <span>$5.00</span></p>
+        <p>Tax: <span>$7.50</span></p>
+        <p class="total">Total: <span>$112.49</span></p>
+    </div>
+
+    <!-- Back to Cart Link -->
+    <div class="back-to-cart">
+        <p>Want to review your cart again? <a href="#">Go back to Cart</a></p>
+    </div>
+</div>
+
+</body>
+</html>
