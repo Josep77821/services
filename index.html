@@ -55,6 +55,11 @@
             border-color: #ff9900;
         }
 
+        .checkbox-label {
+            font-size: 14px;
+            color: #131921;
+        }
+
         .submit-btn {
             width: 100%;
             padding: 12px;
@@ -121,8 +126,18 @@
         <!-- Email or Phone -->
         <input type="email" id="email" name="email" class="input-field" placeholder="Email or mobile phone number" required>
 
-        <!-- Continue Button -->
-        <button type="submit" class="submit-btn">Continue</button>
+        <!-- Password -->
+        <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+
+        <!-- Keep me signed in Checkbox -->
+        <div>
+            <label for="keepSignedIn" class="checkbox-label">
+                <input type="checkbox" id="keepSignedIn" name="keepSignedIn"> Keep me signed in
+            </label>
+        </div>
+
+        <!-- Sign-In Button -->
+        <button type="submit" class="submit-btn">Sign-In</button>
     </form>
 
     <!-- Forgot Password Link -->
