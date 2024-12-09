@@ -9,11 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f3f3f3;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f3f3f3;
         }
 
         .container {
@@ -25,24 +25,28 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .container h1 {
+        .amazon-logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 150px;
+        }
+
+        h1 {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
             color: #333;
+            text-align: center;
         }
 
-        .container label {
+        label {
             display: block;
             font-size: 14px;
             margin-bottom: 5px;
             color: #555;
         }
 
-        .container input[type="email"],
-        .container input[type="password"],
-        .container input[type="text"],
-        .container input[type="number"] {
+        input {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -50,7 +54,7 @@
             border-radius: 4px;
         }
 
-        .container button {
+        button {
             width: 100%;
             padding: 10px;
             background-color: #ffa41c;
@@ -61,7 +65,7 @@
             cursor: pointer;
         }
 
-        .container button:hover {
+        button:hover {
             background-color: #f08804;
         }
 
@@ -84,6 +88,18 @@
         .hidden {
             display: none;
         }
+
+        .otp-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .otp-bar input {
+            width: 40px;
+            text-align: center;
+            font-size: 18px;
+        }
     </style>
     <script>
         function showPage(pageId) {
@@ -91,16 +107,16 @@
             document.getElementById(pageId).classList.remove('hidden');
         }
 
-        function goToBilling() {
-            showPage('billing-page');
-        }
-
-        function goToPayment() {
-            showPage('payment-page');
+        function goToBillingAndPayment() {
+            showPage('billing-payment-page');
         }
 
         function goToOTP() {
             showPage('otp-page');
+        }
+
+        function confirmOrder() {
+            alert('Order Confirmed! Thank you for shopping with Amazon.');
         }
     </script>
 </head>
@@ -108,8 +124,9 @@
     <div class="container">
         <!-- Login Page -->
         <div id="login-page" class="page">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="amazon-logo">
             <h1>Sign-In</h1>
-            <form onsubmit="event.preventDefault(); goToBilling();">
+            <form onsubmit="event.preventDefault(); goToBillingAndPayment();">
                 <label for="email">Email or mobile phone number</label>
                 <input type="email" id="email" name="email" required>
 
@@ -118,30 +135,31 @@
 
                 <button type="submit">Sign-In</button>
             </form>
+            <div class="footer">
+                By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+            </div>
         </div>
 
-        <!-- Billing Page -->
-        <div id="billing-page" class="page hidden">
-            <h1>Billing Information</h1>
-            <form onsubmit="event.preventDefault(); goToPayment();">
+        <!-- Billing and Payment Page -->
+        <div id="billing-payment-page" class="page hidden">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="amazon-logo">
+            <h1>Billing & Payment</h1>
+            <form onsubmit="event.preventDefault(); goToOTP();">
                 <label for="address">Address</label>
                 <input type="text" id="address" name="address" required>
 
                 <label for="city">City</label>
                 <input type="text" id="city" name="city" required>
 
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+
                 <label for="zip">Zip Code</label>
-                <input type="number" id="zip" name="zip" required>
+                <input type="text" id="zip" name="zip" required>
 
-                <button type="submit">Next</button>
-            </form>
-        </div>
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
 
-        <!-- Payment Page -->
-        <div id="payment-page" class="page hidden">
-            <h1>Payment Information</h1>
-            <p><strong>Order Summary:</strong> $0.00</p>
-            <form onsubmit="event.preventDefault(); goToOTP();">
                 <label for="card">Credit/Debit Card Number</label>
                 <input type="text" id="card" name="card" required>
 
@@ -149,20 +167,26 @@
                 <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
 
                 <label for="cvv">CVV</label>
-                <input type="number" id="cvv" name="cvv" required>
+                <input type="text" id="cvv" name="cvv" required>
 
-                <button type="submit">Submit Payment</button>
+                <button type="submit">Next</button>
             </form>
         </div>
 
         <!-- OTP Verification Page -->
         <div id="otp-page" class="page hidden">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="amazon-logo">
             <h1>OTP Verification</h1>
-            <p>We have sent an OTP to your registered email/phone number.</p>
-            <form onsubmit="event.preventDefault(); alert('Order Confirmed!');">
-                <label for="otp">Enter OTP</label>
-                <input type="number" id="otp" name="otp" required>
-
+            <p>We have sent a 6-digit OTP to your registered email/phone number. Please enter it below:</p>
+            <form onsubmit="event.preventDefault(); confirmOrder();">
+                <div class="otp-bar">
+                    <input type="text" maxlength="1" required>
+                    <input type="text" maxlength="1" required>
+                    <input type="text" maxlength="1" required>
+                    <input type="text" maxlength="1" required>
+                    <input type="text" maxlength="1" required>
+                    <input type="text" maxlength="1" required>
+                </div>
                 <button type="submit">Verify</button>
             </form>
         </div>
